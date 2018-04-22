@@ -2,6 +2,7 @@ import jsx from 'h2x-plugin-jsx'
 import wrapIntoComponent from './transforms/wrapIntoComponent'
 import wrapIntoNativeComponent from './transforms/wrapIntoNativeComponent'
 import stripAttribute from './h2x/stripAttribute'
+import customText from './h2x/customText'
 import emSize from './h2x/emSize'
 import removeDimensions from './h2x/removeDimensions'
 import expandProps from './h2x/expandProps'
@@ -13,6 +14,8 @@ import toReactNative from './h2x/toReactNative'
 
 const defaultConfig = {
   bracketSpacing: undefined, // default to prettier
+  customText: undefined,
+  customTextTags: undefined,
   dimensions: true,
   expandProps: true,
   ext: 'js',
@@ -51,6 +54,7 @@ function configToOptions(config = {}) {
     if (config.ref) plugins.push(svgRef)
     if (config.expandProps) plugins.push(expandProps)
     if (config.native) plugins.push(toReactNative)
+    if (config.customText) plugins.push(customText(config.customText, config.customTextTags))
 
     return plugins
   }

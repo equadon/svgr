@@ -65,6 +65,8 @@ program
     'print trailing commas wherever possible when multi-line (prettier)',
   )
   .option('--use-tabs', 'indent lines with tabs instead of spaces (prettier)')
+  .option('--custom-text <text>', 'add custom text to tags')
+  .option('--custom-text-tags <tags>', 'add custom text to these tags (comma separated)')
 
 program.on('--help', () => {
   console.log(`

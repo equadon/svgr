@@ -92,6 +92,10 @@ function configToOptions(config = {}) {
     prettier: config.prettier ? getPrettierConfig() : null,
     template: config.template(config),
     ext: config.ext,
+    replaceText: {
+      old: config.replaceText.split('=')[0],
+      new: config.replaceText.split('=')[1]
+    }
   }
 }
 

@@ -6,6 +6,7 @@ import prettier from './plugins/prettier'
 import transform from './plugins/transform'
 import wrapIntoComponent from './transforms/wrapIntoComponent'
 import { pascalCase } from './transforms/rename'
+import replaceText from './plugins/replaceText'
 import stripAttribute from './h2x/stripAttribute'
 import emSize from './h2x/emSize'
 import expandProps from './h2x/expandProps'
@@ -49,6 +50,7 @@ export async function rawConvert(code, options, state) {
   result = options.prettier
     ? await prettier(result, options.prettier, state)
     : result
+  result = options.replaceText ? replaceText(result, options.replaceText, state) : result
   return result
 }
 

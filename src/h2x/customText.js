@@ -13,8 +13,6 @@ const customText = (text, tags) => {
         enter(path) {
           if (path.node.name === 'svg') {
             props = new JSXAttribute()
-            props.name = 'className'
-            props.value = 'svg-item'
             path.node.name = 'g'
             path.node.attributes = [props]
           } else if (tagList.includes(path.node.name) && !path.node.attributes.some(a => a && a.name === attr)) {
